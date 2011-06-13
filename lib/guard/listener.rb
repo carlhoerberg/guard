@@ -124,7 +124,7 @@ module Guard
     end
 
     def self.windows?
-      Config::CONFIG['target_os'] =~ /mswin|mingw/i
+      Config::CONFIG['target_os'] =~ /mswin|mingw|cygwin/i
     end
 
   end
