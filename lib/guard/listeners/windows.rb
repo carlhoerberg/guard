@@ -32,6 +32,7 @@ module Guard
     end
 
     def watch(directory)
+      directory = %x{ cygpath -w '#{directory}' }.strip if Config::CONFIG['target_os'] == 'cygwin'
       worker.watch(directory, :all_events, :recursive) do |event|
         paths = [File.expand_path(event.watcher.path) + '/']
         files = modified_files(paths, {:all => true})
